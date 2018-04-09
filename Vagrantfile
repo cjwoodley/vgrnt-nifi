@@ -9,8 +9,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #  confluent.vm.box = 'bento/centos-7.2'
     nifi.vm.box = 'bento/ubuntu-17.04'
     nifi.vm.provision 'shell', path: 'scripts/installAnsible.sh'
-    nifi.vm.provision "ansible" do |ansible|
-      ansible.playbook = "playbook.yml"
+    nifi.vm.provision :ansible do |ansible|
+      ansible.playbook = "provisioning/playbook.yml"
     end
     config.vm.box_download_insecure = true
   end
