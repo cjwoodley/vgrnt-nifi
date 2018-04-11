@@ -24,4 +24,14 @@
     dest: /opt/nifi/nifi-1.6.0-bin.tar.gz
     owner: vagrant
     group: vagrant
-    mode: 0644
+    mode: 0775
+    remote_src: yes
+
+- name: Unarchive a file that is already on the remote machine
+  unarchive:
+    src: /opt/nifi/nifi-1.6.0-bin.tar.gz
+    dest: /opt/nifi/
+    remote_src: yes
+
+- name: Execute the script
+  command: sh /opt/nifi/nifi-1.6.0/bin/nifi.sh start
