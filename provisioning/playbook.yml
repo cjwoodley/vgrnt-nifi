@@ -1,9 +1,13 @@
 ---
-  - hosts: localhost
-    connection: local
-    user: root
-    gather_facts: no
+  - hosts: all
+    remote_user: vagrant
+    become: true
+    become_method: sudo
+    become_user: root
+    #connection: local
+    #user: root
+    #gather_facts: no
     tasks:
-    - shell: echo 'test'
+    - shell: echo 'test... holy crap it worked'
       register: foo
     - debug: msg="the echo was {{ foo.stdout }}"
