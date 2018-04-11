@@ -7,6 +7,8 @@
     #connection: local
     #user: root
     #gather_facts: no
+    roles:
+    - nifi
     tasks:
     - shell: echo 'test... holy crap it worked'
       register: foo

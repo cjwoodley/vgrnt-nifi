@@ -1,0 +1,27 @@
+---
+# tasks file for nifi
+- name: Download NIFI bins
+  get_url:
+    url: http://apache.mirror.gtcomm.net/nifi/1.6.0/nifi-1.6.0-bin.tar.gz
+    dest: /tmp/nifi-1.6.0-bin.tar.gz
+    owner: vagrant
+    group: vagrant
+    mode: 0775
+
+
+- name: Create directory
+  file:
+    path: /opt/nifi
+    state: directory
+    owner: vagrant
+    group: vagrant
+    mode: 0775
+    recurse: yes
+
+- name: copy bins to opt
+  copy:
+    src: /tmp/nifi-1.6.0-bin.tar.gz
+    dest: /opt/nifi/nifi-1.6.0-bin.tar.gz
+    owner: vagrant
+    group: vagrant
+    mode: 0644
